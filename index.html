@@ -19,7 +19,7 @@
     body{margin:0;min-height:100vh;background:linear-gradient(180deg,#04101a 0%, #071018 100%);color:#d8e3e7}
 
     /* layout */
-    .wrap{display:flex;gap:24px;align-items:flex-start;padding:28px;max-width:1200px;margin:28px auto}
+    .wrap{display:flex;gap:24px;align-items:flex-start;padding:18px;max-width:1200px;margin:28px auto}
 
     /* sidebar */
     .sidebar{width:220px;background:var(--panel);border-radius:10px;padding:20px;box-shadow:0 6px 18px rgba(2,8,12,0.6)}
@@ -121,13 +121,13 @@
 
         <form>
           <div class="currency-row">
-            <label style="min-width:80px">Currency:</label>
+          <label style="min-width:80px">Currency:</label>
             <div class="chips">
-              <div class="chip active">USD</div>
-              <div class="chip">BTC</div>
-              <div class="chip">ETH</div>
-              <div class="chip">USDC</div>
-            </div>
+            <div class="chip active"><img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png" style="width:16px;height:16px;border-radius:50%;object-fit:cover;margin-right:6px"/>USD</div>
+            <div class="chip"><img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" style="width:16px;height:16px;border-radius:50%;object-fit:cover;margin-right:6px"/>BTC</div>
+            <div class="chip"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" style="width:16px;height:16px;border-radius:50%;object-fit:cover;margin-right:6px"/>ETH</div>
+            <div class="chip"><img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png" style="width:16px;height:16px;border-radius:50%;object-fit:cover;margin-right:6px"/>USDC</div>
+          </div>
           </div>
 
           <div class="row">
@@ -144,7 +144,7 @@
             </div>
           </div>
 
-          <div class="row">
+          <div class="classList">
             <div class="field">
               <label>Address</label>
               <input type="text" value="bnb136ns6lfw4z..." />
@@ -153,9 +153,6 @@
               <label>Amount</label>
               <input type="number" value="3100" />
             </div>
-          </div>
-
-          <div class="row">
             <div class="small field">
               <label>Fee</label>
               <input type="text" value="46.00 USD" />
@@ -164,9 +161,6 @@
               <label>Actual amount</label>
               <input type="text" value="3100.00 USD" />
             </div>
-          </div>
-
-          <div class="row">
             <div class="field">
               <label>Password</label>
               <input type="password" value="password123" />
