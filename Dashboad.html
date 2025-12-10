@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Withdrawal — Dashboard</title>
+  <style>
+    :root{
+      --bg:#071018;
+      --panel:#0f1b22;
+      --muted:#7d8a93;
+      --accent:#12b886;
+      --card:#0c1720;
+      --glass: rgba(255,255,255,0.03);
+      --danger:#ff6b6b;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;background:linear-gradient(180deg,#04101a 0%, #071018 100%);color:#d8e3e7}
+
+    /* layout */
+    .wrap{display:flex;gap:24px;align-items:flex-start;padding:28px;max-width:1200px;margin:28px auto}
+
+    /* sidebar */
+    .sidebar{width:220px;background:var(--panel);border-radius:10px;padding:20px;box-shadow:0 6px 18px rgba(2,8,12,0.6)}
+    .logo{height:46px;width:100%;display:flex;align-items:center;gap:12px}
+    .logo img{height:36px;width:36px;border-radius:8px;object-fit:cover;background:#0b1114}
+    .nav{margin-top:18px}
+    .nav a{display:block;padding:12px 10px;border-radius:8px;color:#9fb0b7;text-decoration:none;margin:6px 0}
+    .nav a.active{background:linear-gradient(90deg,#0e2a26, #0b2b34);color:#cdebe3}
+    .nav a:hover{color:#fff}
+
+    /* main column */
+    .main{flex:1}
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:26px;border-radius:10px;box-shadow:0 8px 30px rgba(2,8,12,0.6)}
+
+    .notice{display:flex;align-items:center;gap:12px;color:var(--accent);font-weight:600;margin-bottom:14px}
+    .currency-row{display:flex;gap:10px;align-items:center;margin-bottom:14px}
+    .chips{display:flex;gap:8px}
+    .chip{padding:6px 10px;border-radius:8px;background:var(--glass);color:#bcd7d3;border:1px solid rgba(255,255,255,0.03);font-weight:600}
+    .chip.active{background:linear-gradient(90deg,#0a6b5b,#0f8c73);color:white}
+
+    form .row{display:flex;gap:12px;align-items:center;margin:12px 0}
+    .field{flex:1}
+    label{display:block;color:var(--muted);font-size:13px;margin-bottom:6px}
+    input[type=text], input[type=password], input[type=number], textarea{width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:rgba(255,255,255,0.02);color:inherit}
+    .small{width:140px}
+
+    .fee-line{color:var(--muted);font-size:13px;margin-top:8px}
+
+    .receipt{position:absolute;right:40px;top:80px;background:rgba(255,255,255,0.95);color:#0b1012;padding:20px;border-radius:18px;font-weight:700;box-shadow:0 8px 30px rgba(3,10,12,0.6);min-width:180px;text-align:center}
+
+    /* bottom history */
+    .history{margin-top:18px;padding:16px;background:var(--card);border-radius:10px}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:12px;text-align:left;font-size:14px;color:#c9d6d9}
+    th{color:var(--muted);font-weight:600}
+    tr + tr td{border-top:1px solid rgba(255,255,255,0.02)}
+
+    /* responsiveness */
+    @media (max-width:900px){
+      .wrap{flex-direction:column;padding:18px}
+      .sidebar{width:100%;display:flex;flex-direction:row;align-items:center;justify-content:space-between}
+      .receipt{position:static;margin:12px auto}
+    }
+
+    @media (max-width:460px){
+      .chips{flex-wrap:wrap}
+      .small{width:100%}
+    }
+
+    /* small helpers */
+    .muted{color:var(--muted)}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:linear-gradient(90deg,#0b6b5f,#0d8b70);color:white;font-weight:700;border:none;cursor:pointer}
+    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.04)}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' fill='%230b1a1f'/><text x='50%' y='55%' font-size='26' font-family='Arial' fill='%2312b886' text-anchor='middle'>N</text></svg>" alt="logo" />
+        <div>
+          <div style="font-weight:700">Trust Fund</div>
+          <div style="font-size:12px;color:var(--muted)">Personal Center</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="#">Personal center</a>
+        <a href="#">Verified</a>
+        <a href="#">Wallet Address</a>
+        <a href="#">Earn orders</a>
+        <a href="#">Account Balance</a>
+        <a href="#">Deposit</a>
+        <a class="active" href="#">Withdraw</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="panel" style="position:relative">
+        <div class="notice">Withdrawal of <strong style="margin-left:6px">$3100</strong> has been delivered to <span style="opacity:.9;margin-left:8px">254758944680</span> successfully.</div>
+
+        <form>
+          <div class="currency-row">
+            <label style="min-width:80px">Currency:</label>
+            <div class="chips">
+              <div class="chip active">USD</div>
+              <div class="chip">BTC</div>
+              <div class="chip">ETH</div>
+              <div class="chip">USDC</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label>Protocol</label>
+              <div style="display:flex;gap:8px">
+                <div class="chip">MPESA</div>
+                <div class="chip">ALKIGAT LIMITED</div>
+              </div>
+            </div>
+            <div class="small field">
+              <label>Available</label>
+              <input type="text" value="$89,896.00 USD" readonly />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label>Address</label>
+              <input type="text" value="bnb136ns6lfw4z..." />
+            </div>
+            <div class="small field">
+              <label>Amount</label>
+              <input type="number" value="3100" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="small field">
+              <label>Fee</label>
+              <input type="text" value="46.00 USD" readonly />
+            </div>
+            <div class="small field">
+              <label>Actual amount</label>
+              <input type="text" value="3100.00 USD" readonly />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label>Password</label>
+              <input type="password" value="password123" />
+            </div>
+            <div style="display:flex;align-items:flex-end">
+              <button class="btn">Confirm Withdrawal</button>
+            </div>
+          </div>
+
+          <div class="fee-line">Withdrawal fee: 1% &nbsp;&nbsp;|&nbsp;&nbsp; Withdrawal time: 1-2 minutes &nbsp;&nbsp;|&nbsp;&nbsp; Minimum withdrawal amount: 1500 USD</div>
+        </form>
+
+        <div class="history">
+          <h4 style="margin:0 0 10px 0;color:#dff2ef">History</h4>
+          <table>
+            <thead>
+              <tr><th>Time</th><th>Order No.</th><th>Amount</th><th>Status</th><th>Details</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>2025-12-03 14:40</td><td>#A12345</td><td>$3100</td><td style="color:var(--accent)">Success</td><td>MPESA — ALKIGAT</td></tr>
+              <tr><td>2025-11-29 09:12</td><td>#A12211</td><td>$1500</td><td style="color:var(--muted)">Pending</td><td>processing</td></tr>
+              <tr><td>2025-10-17 16:02</td><td>#A11988</td><td>$200</td><td style="color:var(--danger)">Failed</td><td>Insufficient balance</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // small interactive touches
+    document.querySelectorAll('.chip').forEach(c => {
+      c.addEventListener('click', ()=>{
+        document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
+        c.classList.add('active');
+      })
+    })
+  </script>
+</body>
+</html>
