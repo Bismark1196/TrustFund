@@ -4,12 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Withdrawal — Dashboard</title>
-  <link rel="icon" href="data:image/svg+xml,
-  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-    <rect width='100' height='100' fill='%230b1a1f'/>
-    <text x='50' y='60' font-size='55' text-anchor='middle' fill='%2312b886'>N</text>
-  </svg>">
-
   <style>
     :root{
       --bg:#071018;
@@ -79,6 +73,23 @@
     .muted{color:var(--muted)}
     .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:linear-gradient(90deg,#0b6b5f,#0d8b70);color:white;font-weight:700;border:none;cursor:pointer}
     .ghost{background:transparent;border:1px solid rgba(255,255,255,0.04)}
+
+  /* EXTRA MOBILE RESPONSIVENESS */
+    @media (max-width:650px){
+      .row{flex-direction:column}
+      .sidebar{flex-direction:column;align-items:flex-start;gap:10px}
+      .sidebar .nav{display:flex;flex-wrap:wrap;gap:6px}
+      .sidebar .nav a{flex:1 1 45%;text-align:center}
+    }
+
+    @media (max-width:380px){
+      body{padding:0}
+      .wrap{padding:12px}
+      .panel{padding:16px}
+      th,td{font-size:12px;padding:8px}
+      .btn{padding:8px 10px;font-size:14px}
+      input{padding:10px;font-size:14px}
+    }
 
   </style>
 </head>
